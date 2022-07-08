@@ -16,4 +16,10 @@ describe("Validate webdriveruni navigation links", () => {
     cy.get("#login-portal").invoke("removeAttr", "target").click();
     cy.url().should("include", "Login-Portal");
   });
+  it("Validate to-do-list page", () => {
+    cy.visit("https://webdriveruniversity.com");
+    cy.get("#to-do-list").invoke("removeAttr", "target").click();
+    cy.url().should("include", "To-Do-List");
+    cy.go("back");
+  });
 });
