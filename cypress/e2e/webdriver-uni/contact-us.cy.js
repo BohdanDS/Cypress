@@ -1,6 +1,12 @@
 /// <reference types='Cypress' />
 
 describe("Test Contact Us form via WebDriverIni", () => {
+  before(() => {
+    cy.fixture("example").then((data) => {
+      // this.data = data;
+      globalThis.data = data;
+    });
+  });
   // it("Should be able to submit a successful form", () => {
   //   //cypress code
   //   // cy.visit("https://webdriveruniversity.com/");
@@ -30,9 +36,9 @@ describe("Test Contact Us form via WebDriverIni", () => {
   it.only("Handling multiple tabs", () => {
     cy.visit("https://webdriveruniversity.com");
     cy.get("#contact-us").invoke("removeAttr", "target").click();
-    cy.get('[name="first_name"]').type("Bohdan");
-    cy.get('[name="last_name"]').type("Peliutkevich");
-    cy.get('[name="email"]').type("bohdan.peliutkevich@gmail.com");
+    cy.get('[name="first_name"]').type(data.first_name);
+    cy.get('[name="last_name"]').type(data.last_name);
+    cy.get('[name="email"]').type(data.email);
     cy.get("textarea.feedback-input").type("Comment");
     cy.get('[type="submit"]').click();
     cy.get("h1").should("have.text", "Thank You for your Message!");
