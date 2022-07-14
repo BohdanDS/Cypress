@@ -1,47 +1,25 @@
 /// <reference types='Cypress' />
 
 describe("Test Contact Us form via WebDriverIni", () => {
-  before(() => {
-    cy.fixture("example").then((data) => {
-      // this.data = data;
-      globalThis.data = data;
-    });
-  });
-  // it("Should be able to submit a successful form", () => {
-  //   //cypress code
-  //   // cy.visit("https://webdriveruniversity.com/");
-  //   // cy.get("#contact-us").click({ force: true });
-  //   cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
-  //   cy.document().should("have.property", "charset").and("eq", "UTF-8");
-  //   cy.title().should("include", "WebDriver | Contact Us");
-  //   cy.get('[name="first_name"]').type("Bohdan");
-  //   cy.get('[name="last_name"]').type("Peliutkevich");
-  //   cy.get('[name="email"]').type("bohdan.peliutkevich@gmail.com");
-  //   cy.get("textarea.feedback-input").type("Comment");
-  //   cy.get('[type="submit"]').click();
-  //   cy.get("h1").should("have.text", "Thank You for your Message!");
-  //   cy.get("#fountainG");
-  // });
-  // it("Empty Email field", () => {
-  //   //cypress code
-  //   cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
-  //   cy.get('[name="first_name"]').type("Negotive-Bohdan");
-  //   cy.get('[name="last_name"]').type("Peliutkevich");
-  //   // cy.get('[name="email"]').type("bohdan.peliutkevich@gmail.com");
-  //   cy.get("textarea.feedback-input").type("Comment");
-  //   cy.get('[type="submit"]').click();
-  //   cy.get("body").contains("Error: all fields are required");
-  //   cy.get("body").contains("Error: Invalid email address");
-  // });
-  it.only("Handling multiple tabs", () => {
+  beforeEach(() => {
     cy.visit("https://webdriveruniversity.com");
     cy.get("#contact-us").invoke("removeAttr", "target").click();
-    cy.get('[name="first_name"]').type(data.first_name);
-    cy.get('[name="last_name"]').type(data.last_name);
-    cy.get('[name="email"]').type(data.email);
-    cy.get("textarea.feedback-input").type("Comment");
-    cy.get('[type="submit"]').click();
-    cy.get("h1").should("have.text", "Thank You for your Message!");
-    cy.get("#fountainG");
+  });
+  it("Empty Email field", () => {
+    cy.fixture("userDetailsNoEmail").as("emptyEmailUserData");
+
+    cy.get("@emptyEmailUserData").then((data) => {
+      cy.fillDatatoContactUsForm(
+        data,
+        "body",
+        "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
+      );
+    });
+  });
+  it("Successful submition", () => {
+    cy.fixture("example").as("data");
+    cy.get("@data").then((data) => {
+      cy.fillDatatoContactUsForm(data, "h1", "Thank You for your Message!");
+    });
   });
 });

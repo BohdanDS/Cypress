@@ -19,8 +19,32 @@
 //
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
+Cypress.Commands.add("selectProduct", (productName) => {
+  cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+    if ($el.text().includes(productName)) {
+      cy.wrap($el).click();
+    }
+  });
+});
+Cypress.Commands.add("navigateToSpecificCategory", (category) => {
+  cy.visit("https://automationteststore.com/");
+  cy.get("a[href*='product/category&path=']").contains(category).click();
+});
+
+Cypress.Commands.add(
+  "fillDatatoContactUsForm",
+  (userData, $selector, textMessage) => {
+    cy.get('[name="first_name"]').type(userData.first_name);
+    cy.get('[name="last_name"]').type(userData.last_name);
+    if (userData.email) {
+      cy.get('[name="email"]').type(userData.email);
+    }
+    cy.get("textarea.feedback-input").type("Comment");
+    cy.get('[type="submit"]').click();
+    cy.get($selector).should("have.text", textMessage);
+  }
+);
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 

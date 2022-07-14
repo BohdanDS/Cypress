@@ -1,6 +1,9 @@
 /// <reference types='Cypress' />
 
 describe("Test Contact Us form in Store", () => {
+  before(() => {
+    cy.fixture("userDetails").as("user");
+  });
   it("Should be able to submit a successful form", () => {
     cy.visit("https://automationteststore.com/");
     // cy.get(
@@ -25,17 +28,19 @@ describe("Test Contact Us form in Store", () => {
     // ^ - starts with
     // XPath selectors
     // cy.xpath("//a[contains(@href, 'contact')]").click();
-    cy.xpath("//input[@id = 'ContactUsFrm_first_name']").type(
-      "First Name XPath"
-    );
+    cy.get("@user").then((user) => {
+      cy.xpath("//input[@id = 'ContactUsFrm_first_name']").type(
+        user.first_name
+      );
+      cy.xpath("//input[@id = 'ContactUsFrm_email']").type(user.email);
+    });
+
     cy.xpath("//input[@id = 'ContactUsFrm_first_name']").should(
       "have.attr",
       "name",
       "first_name"
     );
-    cy.xpath("//input[@id = 'ContactUsFrm_email']").type(
-      "EmailXPath@gmail.com"
-    );
+
     cy.xpath("//input[@id = 'ContactUsFrm_email']").should(
       "have.attr",
       "name",
