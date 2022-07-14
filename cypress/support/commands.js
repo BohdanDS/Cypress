@@ -26,6 +26,22 @@ Cypress.Commands.add("selectProduct", (productName) => {
     }
   });
 });
+
+Cypress.Commands.add("addProductToCart", (productName) => {
+  // cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+  //   if ($el.text() === productName) {
+  //     cy.get(".productcart").eq(index).click();
+  //     // cy.wrap($el).click();
+  //   }
+  cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+    if ($el.text() === productName) {
+      cy.log($el.text());
+      cy.get(".productcart").eq(index).click({ force: true });
+    }
+  });
+  // });
+});
+
 Cypress.Commands.add("navigateToSpecificCategory", (category) => {
   cy.visit("https://automationteststore.com/");
   cy.get("a[href*='product/category&path=']").contains(category).click();
