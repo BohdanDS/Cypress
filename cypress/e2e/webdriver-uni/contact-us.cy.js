@@ -7,7 +7,6 @@ describe("Test Contact Us form via WebDriverIni", () => {
   });
   it("Empty Email field", () => {
     cy.fixture("userDetailsNoEmail").as("emptyEmailUserData");
-
     cy.get("@emptyEmailUserData").then((data) => {
       cy.fillDatatoContactUsForm(
         data,
