@@ -2,7 +2,7 @@
 
 describe("Test Contact Us form via WebDriverIni", () => {
   beforeEach(() => {
-    cy.visit("https://webdriveruniversity.com");
+    cy.visit("/");
     cy.get("#contact-us").invoke("removeAttr", "target").click();
   });
   it("Empty Email field", () => {

@@ -50,7 +50,7 @@ Cypress.Commands.add("navigateToSpecificCategory", (category) => {
 Cypress.Commands.add(
   "fillDatatoContactUsForm",
   (userData, $selector, textMessage) => {
-    cy.get('[name="first_name"]').type(userData.first_name);
+    cy.get('[name="first_name"]').type(Cypress.env("first_name"));
     cy.get('[name="last_name"]').type(userData.last_name);
     if (userData.email) {
       cy.get('[name="email"]').type(userData.email);
