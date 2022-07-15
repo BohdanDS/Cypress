@@ -2,7 +2,7 @@
 
 describe("Handle radioButtons", () => {
   before(() => {
-    cy.visit("https://webdriveruniversity.com");
+    cy.navigateTo_webdriverUni_HomePage();
     cy.get("#dropdown-checkboxes-radiobuttons")
       .invoke("removeAttr", "target")
       .click();

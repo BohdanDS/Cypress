@@ -2,8 +2,9 @@
 
 describe("Test Contact Us form via WebDriverIni", () => {
   beforeEach(() => {
-    cy.visit("/");
-    cy.get("#contact-us").invoke("removeAttr", "target").click();
+    cy.visit(
+      `${Cypress.env("webdriverunivHomePage")}/Contact-Us/contactus.html`
+    );
   });
   it("Empty Email field", () => {
     cy.fixture("userDetailsNoEmail").as("emptyEmailUserData");

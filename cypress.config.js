@@ -4,6 +4,7 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   env: {
     first_name: "Sahra",
+    webdriverunivHomePage: "http://webdriveruniversity.com",
   },
 
   e2e: {
