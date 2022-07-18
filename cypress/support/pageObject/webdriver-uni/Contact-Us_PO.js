@@ -7,7 +7,7 @@ class Contact_Us_PO {
     }
     cy.get("textarea.feedback-input").type("Comment");
     cy.get('[type="submit"]').click();
-    cy.get($selector).should("have.text", textMessage);
+    cy.get($selector).should("have.text", textMessage, { timeout: 60000 });
   }
 }
 

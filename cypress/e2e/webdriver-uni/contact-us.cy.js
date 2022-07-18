@@ -3,16 +3,17 @@ import Contact_Us_PO from "../../support/pageObject/webdriver-uni/Contact-Us_PO"
 /// <reference types='Cypress' />
 
 describe("Test Contact Us form via WebDriverIni", () => {
+  Cypress.config("defaultCommandTimeout", 20000);
+  const contactPage = new Contact_Us_PO();
+  const homePage = new HomePage_PO();
   beforeEach(() => {
     // cy.visit(
     //   `${Cypress.env("webdriverunivHomePage")}/Contact-Us/contactus.html`
     // );
-    const homePage = new HomePage_PO();
     homePage.visitHomeePage_PO();
     homePage.clickOn_specificLink("#contact-us");
   });
   it("Empty Email field", () => {
-    const contactPage = new Contact_Us_PO();
     cy.fixture("userDetailsNoEmail").as("emptyEmailUserData");
     cy.get("@emptyEmailUserData").then((data) => {
       contactPage.submit_Contact_Us_form(
@@ -28,7 +29,6 @@ describe("Test Contact Us form via WebDriverIni", () => {
     });
   });
   it("Successful submition", () => {
-    const contactPage = new Contact_Us_PO();
     cy.fixture("example").as("data");
     cy.get("@data").then((data) => {
       contactPage.submit_Contact_Us_form(
