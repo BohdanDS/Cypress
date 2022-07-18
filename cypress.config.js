@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: 'f9tq69',
   chromeWebSecurity: false,
   env: {
     first_name: "Sahra",
