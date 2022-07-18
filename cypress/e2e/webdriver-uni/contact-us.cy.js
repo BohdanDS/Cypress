@@ -21,6 +21,7 @@ describe("Test Contact Us form via WebDriverIni", () => {
         "body",
         "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
       );
+      // cy.screenshot(); - make screenshot
       // cy.fillDatatoContactUsForm(
       //   data,
       //   "body",
