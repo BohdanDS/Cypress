@@ -10,6 +10,10 @@ module.exports = defineConfig({
     html: false,
     json: true,
   },
+  retries: {
+    runMode: 2,
+    openMode: 3,
+  },
   env: {
     first_name: "Sahra",
     webdriverunivHomePage: "http://webdriveruniversity.com",
