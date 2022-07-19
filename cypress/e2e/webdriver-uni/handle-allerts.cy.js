@@ -6,7 +6,7 @@ describe("Handle Browser alerts", () => {
     cy.get("#popup-alerts").invoke("removeAttr", "target").click();
     cy.get("#button1").click();
     cy.on("window:alert", (str) => {
-      expect(str).to.eq("I am an alert box!");
+      expect(str).to.eq("I am an alert box1!");
     });
   });
   it("Handle JS alert with confirmation", () => {

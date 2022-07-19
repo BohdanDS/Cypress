@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-07-19T08:57:02.898Z",
+    "end": "2022-07-19T08:57:04.650Z",
+    "duration": 1752,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "245308fb-e3d8-4490-b947-80bb32046416",
+      "title": "",
+      "fullFile": "cypress/e2e/webdriver-uni/hanlde-datePicker.cy.js",
+      "file": "cypress/e2e/webdriver-uni/hanlde-datePicker.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6a2f178d-477b-49f9-bb08-9669d32e72f8",
+          "title": "Test Datepicker via webdriveruni",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Select date from the datepicker",
+              "fullTitle": "Test Datepicker via webdriveruni Select date from the datepicker",
+              "timedOut": null,
+              "duration": 769,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://www.webdriveruniversity.com\");\ncy.get(\"#datepicker\").invoke(\"removeAttr\", \"target\").click({\n  force: true\n}); // cy.get(\"#datepicker\").click();\n// // let date = new Date();\n// // date.setDate(date.getDate())\n// // cy.log(date.getDate()) //get current day i.e. 22\n// // let date2 = new Date();\n// // date2.setDate(date.getDate() + 5)\n// // cy.log(date2.getDate()) //get current day i.e. 22 + 5 = 27\n// var date = new Date();\n// date.setDate(date.getDate() + 1);\n// var futureYear = date.getFullYear();\n// var futureMonth = date.toLocaleString(\"default\", { month: \"long\" });\n// var futureDay = date.getDate();\n// cy.log(\"Future year to select: \" + futureYear);\n// cy.log(\"Future month to select: \" + futureMonth);\n// cy.log(\"Future day to select: \" + futureDay);\n// function selectMonthAndYear() {\n//   cy.get(\".datepicker-dropdown\")\n//     .find(\".datepicker-switch\")\n//     .first()\n//     .then((currentDate) => {\n//       if (!currentDate.text().includes(futureYear)) {\n//         cy.get(\".next\").first().click();\n//         selectMonthAndYear();\n//       }\n//     })\n//     .then(() => {\n//       cy.get(\".datepicker-dropdown\")\n//         .find(\".datepicker-switch\")\n//         .first()\n//         .then((currentDate) => {\n//           if (!currentDate.text().includes(futureMonth)) {\n//             cy.get(\".next\").first().click();\n//             selectMonthAndYear();\n//           }\n//         });\n//     });\n// }\n// function selectFutureDay() {\n//   cy.get('[class=\"day\"]').contains(futureDay).click();\n// }\n// selectMonthAndYear();\n// selectFutureDay();",
+              "err": {},
+              "uuid": "000cb30c-084f-4b5f-b498-64543863a460",
+              "parentUUID": "6a2f178d-477b-49f9-bb08-9669d32e72f8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "000cb30c-084f-4b5f-b498-64543863a460"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 769,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
